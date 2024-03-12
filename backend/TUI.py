@@ -6,6 +6,7 @@ from rich.console import Console
 from rich.prompt import Prompt
 from rich.markdown import Markdown
 from rich.traceback import install
+from time import sleep
 install()
 
 console = Console()
@@ -13,7 +14,7 @@ edata = ReadCSV("Employee_data.csv")
 
 def EndUI():
   console.print("\nGOODBYE!", style="bold blue")
-  input()
+  sleep(0.5)
   console.clear()
   exit(0)
 
@@ -128,7 +129,6 @@ def UI():
             case 4:
                 AddRecordUI()
             case _:
-              console.print("\nGOODBYE!", style="bold blue")
-              exit(0)
+              EndUI()
     except KeyboardInterrupt:
         EndUI()
