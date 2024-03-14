@@ -24,3 +24,4 @@ def WriteCSV(data: list, fname: str):
     with open(fname, 'a', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(data)
+        csvfile.close()
