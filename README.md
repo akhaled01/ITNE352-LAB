@@ -1,17 +1,12 @@
-# Lab 1 ITNE352
+# Lab 2 ITNE352
 
-This project is a CSV parser specifically for Employee_data.csv
-
-## To run this project
-
-1. Clone this repo
-2. run `./run.sh`
+This project is a UDP server that runs a  CSV parser specifically for Employee_data.csv
 
 > It is preferable to use linux for running this project
 
 ## Libraries Used
 
-1. rich (for terminal UI)
-2. csv (for csv file operations)
+1. `csv` (for csv file operations)
+2. `socket` (for UDP socket Manipulation)
 
 ### Done by Abdulrahman Idrees - 202200729
