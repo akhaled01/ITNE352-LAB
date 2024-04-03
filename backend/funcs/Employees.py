@@ -3,11 +3,6 @@ def GetAllEmpDetails(data: list, name: str) -> list:
       Function recieves the data list and gets all the employee details by name
       This function will mainly be reused with other functions
     '''
-    
-    if name == "":
-      print("400 - EMPTY COMMAND")
-      return
-    
     for row in data:
         if row[0] == name:
             return row
@@ -40,7 +35,7 @@ def GetDetailsByPositionTitle(data: list, title: str) -> list:
     main_data = []
     for row in data:
         if row[2] == title:
-            main_data.append(row)
+            main_data.append([row[0], row[3]])
     return main_data
 
 

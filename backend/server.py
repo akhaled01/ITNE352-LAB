@@ -14,66 +14,59 @@ serverSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 serverSocket.bind(SERVER_SOCKET_ADDR)
 console.print("[bold green]UDP Server Is live on 127.0.0.1:8080")
 
-while True:
-    data, client_addr = serverSocket.recvfrom(4096)
-    client_command = data.decode('ascii')
+try:
+    while True:
+        data, client_addr = serverSocket.recvfrom(4096)
+        client_command = data.decode('ascii')
 
-    '''
-      The code is designed to work in two modes. normal mode from the terminal menu, 
-      or command mode by launching the client with -c.
-      
-      A command follows a format [GET <Argument> <name or title>]
-      
-      for example, if i wanted the full employee details of Tanner Kendrick, then the
-      command from the client would be:
-      
-          "GET full-employee-Details Tanner Kendrick"
-      
-      If command mode is used, the client will explicitly send the command to the server
-      and the server will in turn send the reply directly. However, menu mode would be much 
-      more user firendly.
-      
-      Keep in mind that the client will always execute commands regardless of the mode, 
-      but in a controlled manner. 
-    '''
+        '''
+        The code is designed to work in two modes. normal mode from the terminal menu, 
+        or command mode by launching the client with -c.
+        
+        A command follows a format [GET <Argument> <name or title>]
+        
+        for example, if i wanted the full employee details of Tanner Kendrick, then the
+        command from the client would be:
+        
+            "GET full-employee-Details Tanner Kendrick"
+        
+        If command mode is used, the client will explicitly send the command to the server
+        and the server will in turn send the reply directly. However, menu mode would be much 
+        more user firendly.
+        
+        Keep in mind that the client will always execute commands regardless of the mode, 
+        but in a controlled manner. 
+        '''
 
-    match client_command:
-        case "TEST test-connection":
-          # NOTE - This is here to test connection to the server from client
+        if client_command == "TEST test-connection":  # NOTE - this is here to test the connections
             serverSocket.sendto(
                 "CONNECTION-RECIEVED".encode('ascii'), client_addr)
-            break
 
-        case command if command.startswith("GET full-employee-Details"):
-          # NOTE -  Q1
+        elif client_command.startswith("GET full-employee-Details"):  # NOTE - Q1
             response_data = json.dumps(GetAllEmpDetails(
-                main_data, ParseCommand(command)))
+                main_data, ParseCommand(client_command)))
             serverSocket.sendto(response_data.encode('ascii'), client_addr)
-            break
 
-        case command if command.startswith("GET gender-experience"):
-          # NOTE - Q2
+        elif client_command.startswith("GET gender-experience"):  # NOTE - Q2
             response_data = json.dumps(GenderExperienceDetails(
-                main_data, ParseCommand(command)))
+                main_data, ParseCommand(client_command)))
             serverSocket.sendto(response_data.encode('ascii'), client_addr)
-            break
 
-        case command if command.startswith("GET title-#"):
-          # NOTE - Q3
+        elif client_command.startswith("GET title-#"):  # NOTE - Q3
             response_data = json.dumps(PositionDetails(
-                main_data, ParseCommand(command)))
+                main_data, ParseCommand(client_command)))
             serverSocket.sendto(response_data.encode('ascii'), client_addr)
-            break
 
-        case command if command.startswith("GET list-title"):
-          # NOTE - Q4
+        elif client_command.startswith("GET list-title"):  # NOTE - Q4
             response_data = json.dumps(GetDetailsByPositionTitle(
-                main_data, ParseCommand(command)))
+                main_data, ParseCommand(client_command)))
             serverSocket.sendto(response_data.encode('ascii'), client_addr)
-            break
 
-        case _:
-          # NOTE - Handling invalid commands
+        else:  # NOTE - Handling invalid commands
             serverSocket.sendto(
                 "400 - INVALID COMMAND".encode('ascii'), client_addr)
-            break
+
+except KeyboardInterrupt:
+    console.print("[bold blue] GOODBYE!")
+finally:
+    exit(0)
