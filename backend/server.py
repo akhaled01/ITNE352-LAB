@@ -3,7 +3,7 @@ import json
 from rich.console import Console
 from rich.traceback import install
 from backend.funcs.utils import ReadCSV, ParseCommand
-from funcs.Employees import GetAllEmpDetails, GenderExperienceDetails, PositionDetails, GetDetailsByPositionTitle
+from funcs.Employees import *
 
 install()  # ensures any errors are printed in a pretty format on the terminal
 main_data = ReadCSV('Employee_data.csv')
