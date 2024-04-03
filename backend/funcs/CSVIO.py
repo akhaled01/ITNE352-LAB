@@ -11,17 +11,3 @@ def ReadCSV(filename: str) -> list:
         for row in csv_reader:
             data.append(row)
     return data[1:]
-
-
-def GetNumberOfRecords(d: list) -> int:
-    return len(d)
-
-
-def WriteCSV(data: list, fname: str):
-    '''
-      Write CSV Row to file
-    '''
-    with open(fname, 'a', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(data)
-        csvfile.close()
