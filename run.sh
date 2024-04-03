@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# NOTE - Done by Abdulrahman Idrees - ID: 202200729  
+
 cd Lab2_env
 source bin/activate
 cd ..

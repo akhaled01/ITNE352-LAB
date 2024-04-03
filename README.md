@@ -15,5 +15,6 @@ This project is a UDP server that allows multiple UDP clients to query data from
 1. `csv` for csv file operations
 2. `socket` for UDP socket Manipulation
 3. `json` for data serialization across sockets
+4. `rich` for good terminal UI
 
 ### Done by Abdulrahman Idrees - 202200729
