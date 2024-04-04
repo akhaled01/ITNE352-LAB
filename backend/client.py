@@ -12,7 +12,7 @@ clientsocket.bind(SOCKET_ADDR)
 op = input("[1] Command Mode, [2] Menu Mode: ")
 
 if op == "1":
-    command = input("Please enter command:")
+    command = input("Please enter command: ")
     clientsocket.sendto(command.encode('ascii'), SERVER_SOCKET_ADDR)
     data, addr = clientsocket.recvfrom(4096)
     print(json.loads(data.decode('ascii')))
