@@ -21,7 +21,7 @@ try:
 
         '''
         The code is designed to work in two modes. normal mode from the terminal menu, 
-        or command mode by launching the client with -c.
+        or command mode by choosing the right option in the client menu.
         
         A command follows a format [GET <Argument> <name or title>]
         
