@@ -10,6 +10,8 @@ This project is a UDP server that allows multiple UDP clients to query data from
 2. To run the UDP server, type `./run.sh server`
 3. To run the UDP client, type `./run.sh client`
 
+> You can also use netcat to run this project by running `nc locahost 8080 -u`, You will have to use the command mode to run this project. To know more about the command mode, please read the documentation provided in `backend/server.py`
+
 ## Libraries Used
 
 1. `csv` for csv file operations
