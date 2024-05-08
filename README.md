@@ -1,4 +1,4 @@
-# Lab 2 ITNE352
+# Lab 3 ITNE352
 
 This project is a multithreaded TCP file server.
 
@@ -6,9 +6,13 @@ This project is a multithreaded TCP file server.
 
 ## Steps For running the project
 
-1. First, give the script proper permissions by running `chmod 777 run.py`
-2. To run the TCP server, type `run.py server`
-3. To run the TCP client, type `./run.sh client`
+1. First, initialize a new virtualenv by running `python -m venv lab_env`
+2. in the terminal, run `activate` if on windows
+   1. If on linux, `cd lab_env` then run `source bin/activate`
+3. run `pip install -r requirements.txt`
+4. give the run script proper permissions by running `chmod 777 run.py`
+5. To run the TCP server, type `py run.py server`
+6. To run the TCP client, type `py run.py client`
 
 ## Libraries Used
 
