@@ -11,8 +11,8 @@ This project is a multithreaded TCP file server.
    1. If on linux, `cd lab_env` then run `source bin/activate`
 3. run `pip install -r requirements.txt`
 4. give the run script proper permissions by running `chmod 777 run.py`
-5. To run the TCP server, type `py run.py server`
-6. To run the TCP client, type `py run.py client`
+5. To run the TCP server, type `python run.py server`
+6. To run the TCP client, type `python run.py client`
 
 ## Libraries Used
 
