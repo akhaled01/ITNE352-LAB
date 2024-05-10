@@ -1,29 +1,45 @@
-from utils.ui import UI
+from utils.client.interactions import GetFsFromServer, GetFileByOption
+from utils.client.ui import UI, FileChooseUI
 from rich.console import Console
+from rich.traceback import install
 from rich.prompt import Prompt
 import socket
 import sys
-import json
 import time
 
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect(("127.0.0.1", 8080))
+install()  # pretty print all tracebacks
+
 
 while True:
+    '''
+      client_socket always ends up getting closed when the thread ends.
+      Hence, reconnection is required
+    '''
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client_socket.connect(("127.0.0.1", 8080))
+
     try:
-        match UI():
-            case 1:
-                client_socket.send("GET fs-list".encode("ascii"))
-                raw_data, _ = client_socket.recvfrom(2048)
-                data = json.loads(raw_data.decode("ascii"))
-                for f in data:
-                    Console().print(f)
-                Prompt("").ask()
-            case 3:
-                raise KeyboardInterrupt
-            case 4:
-                client_socket.send("SIGTERM".encode("ascii"))
-                raise KeyboardInterrupt
+        choice = UI()
+
+        if choice == 1:
+            Console().clear()
+            for i, filename in enumerate(GetFsFromServer(client_socket)):
+                Console().print(i, filename)
+            while True:
+                Prompt.ask("[bold blue] Press Enter to continue")
+                break
+
+        elif choice == 2:
+            GetFileByOption(FileChooseUI(GetFsFromServer(client_socket)))
+
+        elif choice == 3:
+            raise KeyboardInterrupt
+
+        elif choice == 4:
+            client_socket.send("SIGTERM".encode(
+                "ascii"))  # quit and end server
+            raise KeyboardInterrupt
+
     except KeyboardInterrupt:
         client_socket.close()
         Console().print("GOODBYE!", style="bold blue")

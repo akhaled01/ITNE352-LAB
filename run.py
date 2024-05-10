@@ -1,8 +1,16 @@
-import sys
-import subprocess
 from rich import console
+import subprocess
+import sys
 
 c = console.Console()
+
+'''
+  The subprocess module allows us to exec a command with
+  its own process. It is used to launch the server and client 
+  from one command (with a simple CLI argument). This allows us 
+  to remove the tedious process of going to the `internal` 
+  directory and running each one seperately.
+'''
 
 try:
     if len(sys.argv) != 2:
