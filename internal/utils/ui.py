@@ -11,6 +11,7 @@ menu = Markdown(
 1. Get list of files
 2. select file
 3. Quit
+4. Quit and shutdown server
 """
 )
 
@@ -25,7 +26,7 @@ def UI() -> int:
     c.print(menu)
     try:
         op = int(Prompt("Please choose an option").ask())
-        if op < 1 or op > 3:
+        if op < 1 or op > 4:
             raise ValueError
         return op
     except ValueError:
