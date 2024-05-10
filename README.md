@@ -19,7 +19,8 @@ This project is a multithreaded TCP file server.
 1. `socket` for TCP socket utilities
 2. `subprocess` for executing processes
 3. `os` for file and dir manipulation
-4. `json` for data serialization across sockets
-5. `rich` for good terminal UI
+4. `sys` for handling system events gracefully
+5. `json` for data serialization across sockets
+6. `rich` for good terminal UI
 
 ### Done by Abdulrahman Idrees - 202200729
