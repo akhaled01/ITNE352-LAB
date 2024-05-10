@@ -17,8 +17,9 @@ This project is a multithreaded TCP file server.
 ## Libraries Used
 
 1. `socket` for TCP socket utilities
-2. `os` for file and dir manipulation
-3. `json` for data serialization across sockets
-4. `rich` for good terminal UI
+2. `subprocess` for executing processes
+3. `os` for file and dir manipulation
+4. `json` for data serialization across sockets
+5. `rich` for good terminal UI
 
 ### Done by Abdulrahman Idrees - 202200729
