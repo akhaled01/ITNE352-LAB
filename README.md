@@ -2,7 +2,7 @@
 
 This project is a multithreaded TCP file server.
 
-> It is preferable to use Linux OS or Git Bash for running this project
+> It is preferable to use Linux OS for running this project
 
 ## Steps For running the project
 
@@ -16,7 +16,8 @@ This project is a multithreaded TCP file server.
 
 ## Libraries Used
 
-2. `socket` for UDP socket Manipulation
+1. `socket` for TCP socket utilities
+2. `os` for file and dir manipulation
 3. `json` for data serialization across sockets
 4. `rich` for good terminal UI
 

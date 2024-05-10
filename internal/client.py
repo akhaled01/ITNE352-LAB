@@ -1,5 +1,5 @@
-from utils.client.interactions import GetFsFromServer, GetFileByOption
-from utils.client.ui import UI, FileChooseUI
+from utils.interactions import GetFsFromServer, GetFileByOption
+from utils.ui import UI, FileChooseUI
 from rich.console import Console
 from rich.traceback import install
 from rich.prompt import Prompt
