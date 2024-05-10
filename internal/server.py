@@ -35,21 +35,27 @@ def HandleConn(socket: socket.socket):
         elif client_command == "SIGTERM":
             raise KeyboardInterrupt
     except KeyboardInterrupt:
+        server_socket.shutdown(0) # graceful shutdown of server
         server_socket.close()
         socket.close()
         sys.exit(0)
 
 
 def server_loop():
+    '''
+    `server_loop` accepts connections from clients and 
+    creates a `HandleConn` thread. It is assumed that an
+    `OSError` is a Errno 9 (aka `server_socket` is offline), so it 
+    will exit gracefully and end all threads (same with `KeyboardInterrupt`). 
+    '''
     try:
         while True:
             conn, _ = server_socket.accept()
-            conn_thread = Thread(target=HandleConn, args=(conn, server_socket))
+            conn_thread = Thread(target=HandleConn, args=(conn,))
             conn_thread.start()
             conn_thread.join()  # wait for thread to finish
             conn.close()
-    except KeyboardInterrupt:
-        server_socket.close()
+    except (OSError, KeyboardInterrupt):
         sys.exit(0)
 
 

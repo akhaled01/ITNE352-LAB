@@ -20,6 +20,7 @@ def EncodeFile(index: int) -> str:
         filename : hello.txt,
         content: hi there!
       }
+      ```
 
     '''
     with open("internal/files/"+GetFS()[index], "r") as file:

@@ -1,0 +1,32 @@
+# YAML file example
+
+# Top-level key-value pair
+name: John Doe
+
+# List of strings
+favorite_colors:
+  - red
+  - blue
+  - green
+
+# Dictionary (key-value pairs)
+person:
+  name: Jane Doe
+  age: 30
+  occupation: Software Engineer
+
+# Nested dictionary
+address:
+  street: 123 Main St
+  city: Anytown
+  state: CA
+  zip: 12345
+
+# Boolean value
+is_admin: true
+
+# Null value
+null_value: ~
+
+# Timestamp
+created_at: 2023-02-20T14:30:00Z
