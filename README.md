@@ -14,6 +14,8 @@ This project is a multithreaded TCP file server.
 5. To run the TCP server, type `python run.py server`
 6. To run the TCP client, type `python run.py client`
 
+> It should be noted that `internal/files` houses the files served by the server, while `internal/client_files` houses the files requested by the client
+
 ## Libraries Used
 
 1. `socket` for TCP socket utilities
